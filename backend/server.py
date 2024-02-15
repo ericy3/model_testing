@@ -9,7 +9,7 @@ socketio = SocketIO(app)
 
 # Load the Stable Diffusion model
 device = "cuda" if torch.cuda.is_available() else "cpu"
-pipeline = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0").to(device)
+pipeline = DiffusionPipeline.from_pretrained("CompVis/stable-diffusion-v1-4").to(device)
 
 # Handle WebSocket connections
 @socketio.on('image query')
