@@ -13,10 +13,16 @@ export default function TextBox() {
         setValue('');
     };
 
-    socket.on('image query', (image_info) => {
-      let images = [image_info.imageData];
-      setImage(images[0]);
+    socket.on("image response", (imageData) => {
+      // Convert the binary data to a URL that can be used as a source for the image
+      const blob = new Blob([imageData], { type: "image/png" });
+      const url = URL.createObjectURL(blob);
+      setImage(url);
     });
+    // socket.on('image query', (image_info) => {
+    //   let images = [image_info.imageData];
+    //   setImage(images[0]);
+    // });
 
   return (
     <div>
